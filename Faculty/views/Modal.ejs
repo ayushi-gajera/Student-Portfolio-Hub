@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <style>
+        /* Add your CSS styles here */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+
+        }
+
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5%  auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>
+                Name: <%= student.first_Name%>
+            </h2>
+
+
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            About:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                        aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <strong>Name: </strong>
+                            <%= student.first_Name%>
+                                <%= student.last_Name%><br>
+                                    <strong>Email: </strong>
+                                    <%= student.email%><br>
+                                        <strong>DOB: </strong>
+                                        <%= student.date_of_birth%> <br>
+                                            <strong> Phone No: </strong>
+                                            <%= student.first_Name%> <br>
+                                                <strong>Address: </strong>
+                                                <%= student.address%><br>
+                                                    <strong>City: </strong>
+                                                    <%= student.city%> <br>
+                                                        <strong>State: </strong>
+                                                        <%= student.state%><br>
+                                                            <strong>Zip: </strong>
+                                                            <%= student.zip%><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            Education:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            <strong>Degree: </strong>
+                            <%= student.degreeName%><br>
+                                <strong>Status: </strong>
+                                <%= student.degreeStatus%><br>
+                                    <strong>Branch: </strong>
+                                    <%= student.degreeName%> <br>
+                                        <strong>Semester: </strong>
+                                        <%= student.degreeName%><br>
+                                            <strong>University: </strong>
+                                            <%= student.university%> <br>
+                                                <strong>Completion year: </strong>
+                                                <%= student.endDate%> <br>
+                                                        <strong>CGPA: </strong>
+                                                        <%= student.cgpa%><br>
+                                                            <strong>Percentage: </strong>
+                                                            <%= student.percentage%><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            Job / Internship:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            <strong>Company/ Organization: </strong> <%= student.companyName%><br>
+                            <strong>Experience: </strong> <%= student.experience_Company%><br>
+                            <strong>Job Type: </strong>  <%= student.jobType%> <br>
+                            <strong> Start Date: </strong>  <%= student.startDate%><br>
+                            <strong>End Date: </strong>  <%= student.endDate%><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseFour">
+                            Project:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingFour">
+                        <div class="accordion-body">
+                            <strong>Project: </strong><%= student.projectName%><br>
+                            <strong>Project Description: </strong><%= student.projectDes%><br>
+                            <strong>Tools and Technologies: </strong><%= student.projectTool%> <br>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseFive">
+                            Achievements:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingFive">
+                        <div class="accordion-body">
+                            <strong>Achievement In: </strong><%= student.certificate%><br>
+                            <strong>Domain: </strong><%= student.domain%><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            </p>
+
+
+            </p>
+            <!-- Add more fields here -->
+        </div>
+    </div>
+
+    <script>
+        function closeModal() {
+            const faculty = localStorage.getItem('faculty_id');
+            window.location.href = `http://localhost:8000/cards?faculty_id=${faculty}`;
+        }
+    </script>
+</body>
+
+</html>

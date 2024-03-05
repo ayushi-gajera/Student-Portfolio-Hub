@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Faculty Admin Portfolio</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- local css -->
+    <link rel="stylesheet" href="/css/SF_Login.css">
+    <script>
+        function validateForm() {
+            const email = document.getElementById('LoginEmail').value;
+            const faculty_id = document.getElementById('faculty_id').value;
+            const password = document.getElementById('password').value;
+            // Store userId in local storage
+            localStorage.setItem('faculty_id', faculty_id);
+
+            // // Fetch userId from local storage
+            // const faculty = localStorage.getItem('faculty_id');
+
+            // Send the data to the server
+            if (faculty_id.length == 11 || faculty_id.length == 9) {
+
+                fetch('http://localhost:8000/faculty_login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, faculty_id, password })
+                })
+
+                    .then(data => {
+                        console.log('Server response:', data);
+                        window.location.href = `/index?faculty_id=${faculty_id}`;
+                        // Handle successful response from the server
+                    })
+
+
+            }
+            else {
+                alert('Please Enter Valid Faculty Id.');
+                return false;
+            }
+
+            return true; // Assuming the form submission will proceed asynchronously
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="text-light title">
+                <h3 class="mt-3">LOGIN for Faculty!</h3>
+            </div>
+
+            <form action="localhost:8000/faculty_login" method="post" onsubmit="return validateForm()">
+                <div class="mb-3 mt-3">
+                    <label for="LoginEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="LoginEmail" id="LoginEmail"
+                        aria-describedby="emailHelpId" placeholder="abc@mail.com" required />
+                </div>
+                <div class="mb-3">
+                    <label for="faculty_id" class="form-label">Faculty ID</label>
+                    <input type="number" maxlength="11" class="form-control" id="faculty_id" value=""
+                        placeholder="Faculty Id" name="faculty_id" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                        required />
+                </div>
+                <center>
+                    <button class="btn button w-100" type="submit" id="submit">Login</button>
+                </center>
+            </form>
+            <div class="registration mt-3">
+                Don't have any account ?
+                <a class="loginLink" href="/">
+                    Create your account
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>   var body = document.body;</script>
+</body>
+
+</html>

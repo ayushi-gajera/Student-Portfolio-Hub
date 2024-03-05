@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <!-- <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- Font-awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="/css/S_Form.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/paper-bootstrap-wizard.css">
+
+    <!-- cdn for multiple selected option -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+        <a href="http://localhost:8001/index?enrollment_No=${enrollment_No}" class="navbar-brand ml-lg-3">
+            <h1 class="m-0 display-5"><span class="text-primary">Student Portfolio </span>Hub</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
+            <div class="navbar-nav m-auto py-0">
+                <a href="#wizardProfile" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
+                <a href="#education_sec" class="nav-item nav-link">Education</a>
+                <a href="#skill" class="nav-item nav-link">Skill</a>
+                <a href="#ex" class="nav-item nav-link">Experience</a>
+                <a href="#acheivements" class="nav-item nav-link">Achievements</a>
+
+            </div>
+            <a href="" class="btn btn-menu d-none d-lg-block" style="background-color:#457efa; color: #ffffff;">View
+                Portfolio</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <div class="container">
+
+        <!-- <div class="col-12 mb-2" id="photo">
+            <img src="" alt="">
+            <label for="profilePhoto" class="form-label">Upload Your Profile Photo *</label>
+            <input type="file" class="form-control" id="profilePhoto" accept="image/*">
+        </div> -->
+        <form action="localhost:8001/upload-profile" method="post" onsubmit="return uploadProfilePic()">
+        <div class="card wizard-card" data-color="theme" id="wizard_Profile">
+            <div class="picture-container">
+                <div class="picture mt-5">
+                    <img src="/img/default-avatar.jpg" class="picture-src " id="profile-image" title="" />
+                    <input type="file" id="wizard-picture" name="profile-image" accept="image/*">
+                </div>
+                <h6 class="h5">Choose Picture</h6>
+                <button type="submit" class="btn btn-primary" id="wizard_Profile">Upload Image</button>
+            </div>
+        </div>
+    </form>
+
+        <!-- About Section -->
+        <form action="localhost:8001/S_Form" method="post" onsubmit="return validateForm('about')" class="row g-3 mt-5"
+        id="about">
+        
+        <fieldset class="border rounded-3 p-3 mt-5">
+            
+            <legend class="float-none w-auto px-3">About:</legend>
+                <label for="name" class="form-label">Name *</label>
+                <div class="row g-3 mb-2">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                            id="fname" required>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+                            id="lname" required>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mb-2">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="g-3 col-md-12 row">
+                    <div class="col-md-6 mb-2 float-start">
+                        <label for="dob" class="form-label">Date of Birth *</label>
+                        <input type="date" class="form-control" id="dob" required>
+                    </div>
+                    <div class="col-md-6 mb-2 float-start">
+                        <label for="phone_no" class="form-label">Phone No *</label>
+                        <input type="tel" maxlength="10" class="form-control" id="phone_no" required>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                </div>
+
+                <div class="col-md-12 row g-3">
+                    <div class="col-md-4 mb-2 float-start">
+                        <label for="city" class="form-label">City *</label>
+                        <input type="text" class="form-control" id="city" required>
+                    </div>
+                    <div class="col-md-4 mb-2 float-start">
+                        <label for="state" class="form-label">State *</label>
+                        <select id="state" class="form-select" required>
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-2 float-start">
+                        <label for="zip" class="form-label">Zip</label>
+                        <input type="tel" maxlength="6" class="form-control" id="zip">
+                    </div>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label for="jobType" class="form-label">Job Type *</label>
+                    <input type="text" class="form-control" placeholder="Enter Job-Type (Ex- Web Developer)"
+                        id="jobType">
+                </div>
+                <div class="col-12 mb-2 save_btn">
+                    <button type="submit" class="btn btn-primary mt-3 submit" id="submit_about">Save Details</button>
+                </div>
+            </fieldset>
+        </form>
+        <!-- About Section Over -->
+
+
+
+
+        <!-- Education Section -->
+        <form action="localhost:8001/S_Form" method="post" onsubmit="return validateForm('education')" class="row g-3"
+            id="education">
+
+            <fieldset class="border rounded-3 p-3 h-auto edu_parent" id="education_sec">
+                <legend class="float-none w-auto px-3">Education:</legend>
+
+                <!-- <form class="container" id="education">
+                    <fieldset class="border rounded-3 p-3"> -->
+                <fieldset class="border rounded-3 p-3">
+
+                    <legend class="float-none w-auto px-3">DEGREE</legend>
+                    <div class="mb-3">
+                        <button type="button" class="btn-close float-end" id="closeBtn" data-bs-dismiss="education"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <div><label for="degreeName" class="form-label">Degree *</label>
+                                <input type="text" class="form-control" placeholder="--- Enter Degree ---"
+                                    id="degreeName" required>
+                            </div>
+                            <div><label for="branch" class="form-label">Branch *</label>
+                                <input type="text" class="form-control" placeholder="--- Enter Branch ---" id="branch"
+                                    required>
+                            </div>
+
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div> <label for="semester" class="form-label">Semester *</label>
+                                <select class="form-select form-select-md" aria-label=".form-select-md example"
+                                    id="semester" required>
+                                    <option selected>--- Select Semester ---</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="2">3</option>
+                                    <option value="2">4</option>
+                                    <option value="2">5</option>
+                                    <option value="2">6</option>
+                                    <option value="2">7</option>
+                                    <option value="2">8</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="degreeStatus" class="form-label">Status *</label>
+                                <select class="form-select form-select-md" aria-label=".form-select-md example"
+                                    id="degreeStatus" required>
+                                    <option selected>--- Select Status ---</option>
+                                    <option value="1">Pursuing</option>
+                                    <option value="2">Completed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="university" class="form-label">University/School/College *</label>
+                            <input type="text" class="form-control" placeholder="Enter University or College or School"
+                                id="university" required>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="year" class="form-label">Completion Year *</label>
+                            <input type="number" class="form-control" max="2030" min="1990" placeholder="Select Year"
+                                id="year" required>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="cgpa" class="form-label">--- Enter CGPA out of 10 ---</label>
+                            <input type="tel" class="form-control" maxlength="4" max="10" placeholder="Add your CGPA"
+                                id="cgpa">
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="percentage" class="form-label">Percentage</label>
+                            <input type="tel" class="form-control" maxlength="5" max="100" min=""
+                                placeholder="Add your Percentage" id="percentage">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="col-12 mb-2 save_btn">
+                    <button type="submit" class="btn btn-primary mt-3 submit" id="submit_education">Save
+                        Details</button>
+                    <button class=" btn text-primary mt-4 " id="plus_icon"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </fieldset>
+        </form>
+
+
+
+
+
+
+
+        <!-- Experience Section -->
+        <form action="localhost:8001/S_Form" method="post" onsubmit="return validateForm('job')" class="row g-3"
+            id="job">
+
+            <fieldset class="border rounded-3 p-3 h-auto">
+                <legend class="float-none w-auto px-3">Job / Internship:</legend>
+                <div class="mb-5 mr-4">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <!-- <div class="container experience_container row"> -->
+                <div class="col-12 mb-2"> <label for="companyName" class="form-label">Comapany Name</label>
+                    <input type="text" class="form-control" placeholder="--- Enter Company Name ---" id="companyName">
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="experienceCompany" class="form-label">Experience (in year)</label>
+                        <input type="number" maxlength="2" class="form-control" placeholder="Enter Experience"
+                            id="experienceCompany">
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="jobType" class="form-label">Job Type</label>
+                        <input type="text" class="form-control" placeholder="Enter Job-Type (Ex- Web Developer)"
+                            id="jobType">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" maxlength="4" placeholder="Enter Start Date"
+                            id="startDate">
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <input type="date" class="form-control" maxlength="4" placeholder="Enter End Date" id="endDate">
+                    </div>
+                </div>
+                <div class="col-12 mb-2 save_btn">
+                    <button type="submit" class="btn btn-primary mt-3 submit" id="submit_job">Save
+                        Details</button>
+                    <button class=" btn text-primary mt-4 " id="plus_icon"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </fieldset>
+        </form>
+        <!-- Experience section Over -->
+
+
+
+
+        <!-- Skill Section -->
+        <form action="localhost:8001/S_Form" method="post" onsubmit="return validateForm('skill')" class="row g-3"
+            id="skill">
+
+            <fieldset class="border rounded-3 p-3 h-auto" id="">
+                <legend class="float-none w-auto px-3">Skills:</legend>
+                <div class="mb-5 mr-4">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="tools" class="form-label">Tools / Technology *</label><br>
+                        <input type="text" class="form-control" placeholder="Ex. JavaScript,c++,c##" id="tools">
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="interpersonal" class="form-label">Interpersonal Skill *</label><br>
+                        <input type="text" class="form-control" placeholder="Ex. Communication" id="interpersonal">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="persentage_tech" class="form-label">Percentage-tech *</label><br>
+                        <input type="text" class="form-control" placeholder="Ex. 89" id="persentage_tech">
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="persentage_inter" class="form-label">Percentage-inter *</label><br>
+                        <input type="text" class="form-control" placeholder="Ex. 89" id="persentage_inter">
+                    </div>
+                </div>
+                <div class="col-12 mb-2 save_btn">
+                    <button type="submit" class="btn btn-primary mt-3 submit" id="submit_skill">Save
+                        Details</button>
+                    <button class=" btn text-primary mt-4 " id="plus_icon"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+            </fieldset>
+        </form>
+        <!-- Skill section Over -->
+
+
+
+        <!-- Project Section -->
+        <form action="localhost:8001/S_Form" method="post" onsubmit="return validateForm('projects')" class="row g-3"
+            id="projects">
+
+            <fieldset class="border rounded-3 p-3 h-auto" id="project-parent">
+                <legend class="float-none w-auto px-3">Project:</legend>
+
+                <div id="project-parent" class="p-1">
+                    <fieldset class="border rounded-3 p-3 h-auto m-3 row project">
+                    
+                    <div class="mb-3">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+
+                    </div>
+                    <div class="col-12 mb-2">
+                         <label for="projectName" class="form-label">Project Name:</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter Your Project Name" name="projects[0][name]" required><br>
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <label for="projectDes" class="form-label">Project Description *</label>
+                        <input type="text" class="form-control" placeholder="Enter Your Project Description" name="projects[0][description]"
+                        id="projectDes">
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <label for="projectTool" class="form-label">Tools / Technology *</label><br>
+                        <select data-placeholder="Select Tools / Technologies" class="selectpicker" multiple
+                            data-live-search="true" name="projects[0][tools][]" id="projectTool0" required>
+                        <option>C++</option>
+                        <option>Java</option>
+                        <option>Python</option>
+                        <option>HTML</option>
+                        </select>
+                    </div>
+                    </fieldset>
+                </div>
+            
+                <div class="col-12 mb-2 save_btn">
+                    <button type="submit" class="btn btn-primary mt-3 submit" id="submit_project">Save
+                        Details</button>
+
+                    <button type="button" class=" btn text-primary mt-4 " id="plus_icon" onclick="addProject()"> <i class="fa-solid fa-plus"> </i></button>
+                </div>
+            </fieldset>
+        </form>
+
+        <!-- Project Section Over -->
+
+        <!-- Achievement Section -->
+        <!-- <form> -->
+        <fieldset class="border rounded-3 p-3 h-auto" id="acheivements">
+            <legend class="float-none w-auto px-3">Achievements:</legend>
+            <div class="mb-3">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <label for="certificate" class="form-label">Upload Your Certificate</label>
+                    <input type="file" class="form-control" id="certificate">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="domain" class="form-label">Domain</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Domain" id="domain">
+                </div>
+            </div>
+            <div class="col-12 mb-2 save_btn">
+                <button type="submit" class="btn btn-primary mt-3 submit" id="submit_achievment">Save
+                    Details</button>
+                <button class=" btn text-primary mt-4 " id="plus_icon"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </fieldset>
+        <!-- </form> -->
+
+        <!-- Achievement section Over -->
+
+        <!-- Project -->
+        <input type="file" name="Projectfile" id="Projectfile">
+        <button onclick="handleFile()">Upload File</button>
+
+        <!-- Certificate -->
+        <!-- <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="" id="uploadCertificate">
+            <button type="submit">Upload File</button>
+        </form> -->
+
+        <!-- save button-->
+
+    </div>
+    <!-- <script src="/js/charts/S_Form.js"></script> -->
+    <script>   var body = document.body;</script>
+    <script src="/assets/js/paper-bootstrap-wizard.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/jquery.bootstrap.wizard.js"></script>
+    <script src="/assets/js/paper-bootstrap-wizard.js"></script>
+    <script src="/assets/js/jquery.validate.min.js"></script>
+    <script>
+          let projectCount = 1;
+
+    function addProject() {
+        projectCount++;
+        const projectDiv = document.createElement('fieldset');
+        projectDiv.classList.add('border', 'rounded-3', 'p-3','m-3' ,'h-auto', 'row','project' );
+        projectDiv.innerHTML = `
+                    
+                    <div class="mb-3">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+
+                    </div>
+                    <div class="col-12 mb-2">
+                         <label for="projectName" class="form-label">Project Name:</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter Your Project Name" name="projects[${projectCount}][name]" required><br>
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <label for="projectDes" class="form-label">Project Description *</label>
+                        <input type="text" class="form-control" placeholder="Enter Your Project Description" name="projects[${projectCount}][description]"
+                        id="projectDes">
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <label for="projectTool" class="form-label">Tools / Technology *</label><br>
+                        <select data-placeholder="Select Tools / Technologies" class="selectpicker" multiple
+                            data-live-search="true" name="projects[${projectCount}][tools][]" id="projectTool${projectCount}" required>
+                        <option>C++</option>
+                        <option>Java</option>
+                        <option>Python</option>
+                        <option>HTML</option>
+                        </select>
+                    </div>
+     `;
+        document.getElementById('project-parent').appendChild(projectDiv);
+        $('.selectpicker').selectpicker('refresh');
+
+        const formData = {
+        projectName: document.getElementByName(`projects[${projectCount}][name]`),
+        projectDes: document.getElementByName(`projects[${projectCount}][description]`),
+        projectTool: document.getElementByName(`projectTool[${projectCount}][tools][]`).value,
+    };
+
+    const enrollment_No = localStorage.getItem('enrollmentNo');
+
+    try {
+        const response =  fetch(`http://localhost:8001/S_Form?enrollment_No=${enrollment_No}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data =  response.json();
+        console.log('Server response:', data);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+
+}
+        
+              function handleFile() {
+            const fileInput = document.getElementById('Projectfile');
+            const file = fileInput.files[0];
+
+            const formData = new FormData();
+
+            const enrollment_No = localStorage.getItem('enrollmentNo')
+
+            formData.append('Projectfile', file);
+            formData.append('enrollmentNo', enrollment_No)
+
+            fetch(`http://localhost:8001/upload?enrollment_No=${enrollment_No}`, {
+                method: 'POST',
+                body: formData
+            })  .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    // Handle successful response from the server
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    // Handle errors
+                });
+        }
+
+        function validateForm(section) {
+            const projectToolArray=document.getElementById('projectTool');
+            const valueArray=Array.from(projectToolArray.selectedOptions).map(option=>option.value);
+            const formData = {
+                first_Name: document.getElementById('fname').value,
+                last_Name: document.getElementById('lname').value,
+                email: document.getElementById('email').value,
+                date_of_birth: document.getElementById('dob').value,
+                phone_no: document.getElementById('phone_no').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value,
+                jobType: document.getElementById('jobType').value,
+                
+                degreeName: document.getElementById('degreeName').value,
+                semester: document.getElementById('semester').value,
+                university: document.getElementById('university').value,
+                branch: document.getElementById("branch").value,
+                degreeStatus: document.getElementById('degreeStatus').value,
+                Completionyear: document.getElementById('year').value,
+                cgpa: document.getElementById('cgpa').value,
+                percentage: document.getElementById('percentage').value,
+
+                companyName: document.getElementById('companyName').value,
+                experienceCompany: document.getElementById('experienceCompany').value,
+                jobType: document.getElementById('jobType').value,
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+
+                tool: document.getElementById('tools').value,
+                interpersonal: document.getElementById('interpersonal').value,
+                
+                projectName: document.getElementByName('projectName').value,
+                projectDes: document.getElementById('projectDes').value,
+                projectTool:valueArray,
+
+            }
+                const enrollment_No = localStorage.getItem('enrollmentNo');
+        
+
+            fetch(`http://localhost:8001/S_Form?enrollment_No=${enrollment_No}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData),
+
+
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    toolsInput.value = '';
+
+                    // Handle successful response from the server
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    console.log("error")
+                    // Handle errors
+                });
+            return true; // Assuming the form submission will proceed asynchronously
+
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+    // Event listeners for form submission
+    document.getElementById('submit_about').addEventListener('click', function () {
+        validateForm('about');
+    });
+    document.getElementById('submit_education').addEventListener('click', function () {
+        validateForm('education');
+    });
+    document.getElementById('submit_job').addEventListener('click', function () {
+        validateForm('job');
+    });
+    document.getElementById('submit_achievment').addEventListener('click', function () {
+        validateForm('achievment');
+    });
+    document.getElementById('submit_project').addEventListener('click', function () {
+        validateForm('projects');
+    });
+    document.getElementById('submit_skill').addEventListener('click', function () {
+        validateForm('skill');
+    });
+    document.getElementById('wizard_picture').addEventListener('click', function () {
+        uploadProfilePic();
+    });
+
+    // Other code as needed
+});
+
+        // function uploadProfilePic(){
+        //     const file = event.target.files[0];
+        //     const formimg={
+        //         profilePic: document.getElementById('wizard-picture'),
+        //     }
+        //     fetch('http://localhost:8001/upload-profile', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(formimg),
+
+        //     })
+        //         .then(response => {
+        //             if (!response.ok) {
+        //                 throw new Error('Network response was not ok');
+        //             }
+        //             console.log("fet")
+        //             return response.json();
+        //         })
+        //         .then(data => {
+        //             console.log('Server response:', data);
+        //             window.location.href = `/index?enrollment_No=${enrollment_No}`;
+
+        //             // Handle successful response from the server
+        //         })
+        //         .catch(error => {
+        //             console.error('There was a problem with the fetch operation:', error);
+        //             console.log("error")
+        //             // Handle errors
+        //         });
+        //     return true; 
+            
+        // }
+        
+            // Assuming the form submission will proceed asynchronously
+        // document.getElementById('imageInput').addEventListener('change', function(event) {
+        //     const file = event.target.files[0];
+            
+        //     if (file) {
+        //         const reader = new FileReader();
+                
+        //         reader.onload = function(e) {
+        //             const previewImage = document.getElementById('wizard-picture');
+        //             previewImage.style.display = 'block';
+        //             previewImage.src = e.target.result;
+        //         };
+                
+        //         reader.readAsDataURL(file);
+
+        //         // Call a function to upload the image to Cloudinary
+        //         uploadImage(file);
+        //     }
+        // });
+
+        // function uploadImage(file) {
+        //     const formData = new FormData();
+        //     formData.append('file', file);
+        //     formData.append('upload_preset', 'your_cloudinary_upload_preset');
+
+        //     fetch('https://api.cloudinary.com/v1_1/your_cloud_nameupload', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Failed to upload image');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log('Image uploaded successfully:', data);
+        //         // Handle the uploaded image data as needed
+        //     })
+        //     .catch(error => {
+        //         console.error('Error uploading image:', error);
+        //     });
+        // }
+
+    </script>
+    <script src="/S_Form.js"></script>
+
+</body>
+
+</html>
