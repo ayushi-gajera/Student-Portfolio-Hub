@@ -46,29 +46,18 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
     <title>Student Portfolio Hub</title>
 </head>
 
 <body>
-    <!--Page loader-->
-    <!-- <div class="loader-wrapper">
-        <div class="loader-circle">
-            <div class="loader-wave"></div>
-        </div>
-    </div> -->
-    <!--Page loader-->
 
     <!--Page Wrapper-->
 
     <div class="container-fluid">
 
         <!--Header-->
-        <div class="row header shadow-sm" >
+        <div class="row header shadow-sm">
 
             <!--Logo-->
             <div class="col-sm-3 pl-0 text-center header-logo">
@@ -160,7 +149,7 @@
                                         <img class="align-self-center mr-3 rounded-circle" src="assets/img/profile.jpg"
                                             width="50px" height="50px" alt="Generic placeholder image">
                                         <div class="media-body">
-                                            <h6 class="mt-0"><strong>Adam Abdulrahman</strong></h6>
+                                            <h6 class="mt-0"><strong>XYZ</strong></h6>
                                             <p>How are you?</p>
                                             <small class="text-success">09:23am</small>
                                         </div>
@@ -172,7 +161,7 @@
                                         <img class="align-self-center mr-3 rounded-circle" src="assets/img/profile.jpg"
                                             width="50px" height="50px" alt="Generic placeholder image">
                                         <div class="media-body">
-                                            <h6 class="mt-0"><strong>Adam Abdulrahman</strong></h6>
+                                            <h6 class="mt-0"><strong>XYZ</strong></h6>
                                             <p>How are you?</p>
                                             <small class="text-success">09:23am</small>
                                         </div>
@@ -184,7 +173,7 @@
                                         <img class="align-self-center mr-3 rounded-circle" src="assets/img/profile.jpg"
                                             width="50px" height="50px" alt="Generic placeholder image">
                                         <div class="media-body">
-                                            <h6 class="mt-0"><strong>Adam Abdulrahman</strong></h6>
+                                            <h6 class="mt-0"><strong>XYZ</strong></h6>
                                             <p>How are you?</p>
                                             <small class="text-success">09:23am</small>
                                         </div>
@@ -210,8 +199,7 @@
                         <div class="mr-4">
                             <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <img src="assets/img/profile.jpg" alt="Adam" class="rounded-circle" width="40px"
-                                    height="40px">
+                                <img src="#" alt="photo" class="rounded-circle" width="40px" height="40px">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#"><i class="fa fa-user pr-2"></i> Profile</a>
@@ -239,7 +227,7 @@
                 <div class="inner-sidebar mr-3">
                     <!--Image Avatar-->
                     <div class="avatar text-center">
-                        <img src="assets/img/client-img4.png" alt="" class="rounded-circle" />
+                        <img src="#" alt="" class="rounded-circle" />
                         <p><strong>
                                 <%= faculty.first_Name%>
                                     <%= faculty.last_Name%>
@@ -263,7 +251,7 @@
                             <li class="parent">
                                 <a href="#" onclick="toggle_menu('ul_element'); return false" class=""><i
                                         class="fa fa-puzzle-piece mr-3"></i>
-                                    <span class="none">UI Elements <i
+                                    <span class="none">Student Information <i
                                             class="fa fa-angle-down pull-right align-bottom"></i></span>
                                 </a>
                                 <ul class="children" id="ul_element">
@@ -278,52 +266,12 @@
 
                                 </ul>
                             </li>
-                            <li class="parent">
-                                <a href="#" onclick="toggle_menu('form_element'); return false" class=""><i
-                                        class="fa fa-pencil-square mr-3"></i>
-                                    <span class="none">Form Elements <i
-                                            class="fa fa-angle-down pull-right align-bottom"></i></span>
-                                </a>
-                                <ul class="children" id="form_element">
 
-                                    <li class="child"><a
-                                            href="http://localhost:8000/form_wizard?faculty_id=<%= faculty.faculty_id%>"
-                                            class="ml-4"><i class="fa fa-angle-right mr-2"></i> Form Wizard</a></li>
-                                </ul>
-                            </li>
-                            <li class="parent">
-                                <a href="#" onclick="toggle_menu('editors'); return false" class=""><i
-                                        class="fa fa-pencil-square-o mr-3"></i>
-                                    <span class="none">Text Editors <i
-                                            class="fa fa-angle-down pull-right align-bottom"></i></span>
-                                </a>
-                                <ul class="children" id="editors">
-
-                                    <li class="child"><a
-                                            href="http://localhost:8000/text_editor?faculty_id=<%= faculty.faculty_id%>"
-                                            class="ml-4"><i class="fa fa-angle-right mr-2"></i> Ckeditor document</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="parent">
-                                <a href="#" onclick="toggle_menu('tables'); return false" class=""><i
-                                        class="fa fa-pencil-square mr-3"></i>
-                                    <span class="none">Tables <i
-                                            class="fa fa-angle-down pull-right align-bottom"></i></span>
-                                </a>
-                                <ul class="children" id="tables">
-
-                                    <li class="child"><a
-                                            href="http://localhost:8000/grid_table?faculty_id=<%= faculty.faculty_id%>"
-                                            class="ml-4"><i class="fa fa-angle-right mr-2"></i> JSGrid Tables</a></li>
-                                </ul>
-                            </li>
 
                             <li class="parent">
                                 <a href="#" onclick="toggle_menu('pages'); return false" class=""><i
                                         class="fa fa-file mr-3"></i>
-                                    <span class="none">Pages <i
+                                    <span class="none">My Account <i
                                             class="fa fa-angle-down pull-right align-bottom"></i></span>
                                 </a>
                                 <ul class="children" id="pages">
@@ -355,23 +303,21 @@
                                         <i class="fa fa-user"></i>
                                     </div>
                                     <div class="media-body pl-2">
-                                        <h3 class="mt-0 mb-0"><strong><%=student.length%></strong></h3>
+                                        <h3 class="mt-0 mb-0"><strong>
+                                                <%=student.length%>
+                                            </strong></h3>
                                         <p><small class="text-muted bc-description">Total Students</small></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
                 <div class="outer-wrapper">
                     <div class="table-wrapper">
-                        <!-- <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm"> -->
-                        <!--Order Listing-->
-                        <!-- <div class="product-list"> -->
-                        <!-- <div class="table-responsive product-list"> -->
-                        <!-- <table class="table table-bordered table-striped mt-0" id="productList"> -->
+
                         <table class="table table-bordered table-striped mt-0" id="productList">
                             <thead>
                                 <th style="width: 10px;" class="p-0 pr-4 align-middle">
@@ -417,7 +363,7 @@
 
                             <!-- <script>getUniqueValuesFromColumn()
             </script> -->
-                            <tbody >
+                            <tbody>
                                 <% student.forEach(function(data) { %>
                                     <tr class="name_student">
                                         <td style="width: 10px;" class="p-0 pr-1 align-middle">
@@ -431,20 +377,21 @@
                                         <td class="stu_en">
                                             <%= data.enrollment_No %>
                                         </td>
-                               
+
 
                                         <td class="stu_name align-middle">
                                             <%= data.first_Name %>
                                                 <%= data.last_Name %>
                                         </td>
 
-                               
+
 
                                         <td>B.Tech</td>
                                         <td>Computer</td>
-                                        <td class="align-middle">2</td>                                                 
-                                        <td class="align-middle"><span class="badge badge-warning click_btn"><a href="/modal_dashboard/<%= data.enrollment_No%>">Click
-                                                Me</a></span>
+                                        <td class="align-middle">2</td>
+                                        <td class="align-middle"><span class="badge badge-warning click_btn"><a
+                                                    href="/modal_dashboard/<%= data.enrollment_No%>">Click
+                                                    Me</a></span>
                                         </td>
                                         <td class="align-middle text-center">2026
                                         </td>
@@ -473,10 +420,6 @@
         </div>
     </div>
     </div>
-    <!--Order Update Modal-->
-    <!-- </div> -->
-    <!-- </div> -->
-    <!-- </div> -->
 
     <!--Main Content-->
 
@@ -500,20 +443,6 @@
     <script src="/assets/js/charts/jquery.flot.pie.min.js"></script>
     <script src="/assets/js/charts/jquery.flot.categories.min.js"></script>
     <script src="/assets/js/charts/jquery.flot.stack.min.js"></script>
-    <!--Chart JS-->
-    <!-- <script src="/public/assets/js/charts/chart.min.js"></script> -->
-    <!--Chartist JS-->
-    <!-- <script src="/public/assets/js/charts/chartist.min.js"></script> -->
-    <!-- <script src="/public/assets/js/charts/chartist-data.js"></script> -->
-    <!-- <script src="/public/assets/js/charts/demo.js"></script> -->
-    <!--Maps-->
-    <!-- <script src="/public/assets/js/maps/jquery-jvectormap-2.0.2.min.js"></script> -->
-    <!-- <script src="/public/assets/js/maps/jquery-jvectormap-world-mill-en.js"></script> -->
-    <!-- <script src="/public/assets/js/maps/jvector-maps.js"></script> -->
-    <!--Bootstrap Calendar JS-->
-    <!-- <script src="/public/assets/js/calendar/bootstrap_calendar.js"></script> -->
-    <!-- <script src="/public/assets/js/calendar/demo.js"></script> -->
-    <!--Nice select-->
     <script src="/assets/js/jquery.nice-select.min.js"></script>
 
     <!--Custom Js Script-->
